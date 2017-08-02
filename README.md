@@ -1,6 +1,8 @@
 # S2I Builder for Angular Apps
 OpenShift S2I builder image for Angular apps using Angular CLI and NGINX.
 
+This build is based on MrGoro's [S2I Angular HTTPD](https://github.com/MrGoro/s2i-angular-container.git) project.
+
 Builder image contains a NodeJS / NPM environment to be able to build your Angular application using the angular cli (ng build --prod).
 
 Additionally NGINX is used during runtime to statically serve the files generated during build phase. You can customize the nginx conf 
