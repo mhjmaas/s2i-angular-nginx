@@ -1,0 +1,40 @@
+{
+  "kind": "ImageStream",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "s2i-angular-nginx",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "dockerImageRepository": "mhjmaas/s2i-angular-nginx",
+    "tags": [
+      {
+        "name": "latest",
+        "annotations": {
+          "description": "Build Angular apps with CLI and run them with NGINX",
+          "iconClass": "js-icon",
+          "supports": "angular,angular:1",
+          "tags": "builder,nginx",
+          "version": "1"
+        },
+        "from": {
+          "kind": "ImageStreamTag",
+          "name": "latest"
+        }
+      }
+    ]
+  },
+  "status": {
+    "dockerImageRepository": "mhjmaas/s2i-angular-nginx",
+    "tags": [
+      {
+        "tag": "1",
+        "items": [
+          {
+            "dockerImageReference": "mhjmaas/s2i-angular-nginx:latest"
+          }
+        ]
+      }
+    ]
+  }
+}
