@@ -8,7 +8,6 @@ if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
 fi
 
 echo "---> Installing NPM Dependencies (with dev)"
-npm config set registry http://nexus.o-rechtspraak.minjus.nl/repository/npm-all
 npm install
 npm install --only=dev
 
