@@ -7,7 +7,7 @@ from os import fdopen, remove
 var_mask = "env_"
 for key in os.environ.keys():
     if key.lower().startswith(var_mask):
-        file_path = "/opt/app-root/etc/nginx.d/module.conf"
+        file_path = "/etc/nginx/conf.d/module.conf"
 
         #Create temp file
         fh, abs_path = mkstemp()
