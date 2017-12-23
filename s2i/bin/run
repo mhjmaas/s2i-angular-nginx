@@ -7,4 +7,6 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 
+python /usr/libexec/s2i/replace_env.py
+
 exec /usr/sbin/nginx -g "daemon off;"

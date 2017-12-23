@@ -16,10 +16,11 @@ echo "---> Building Angular CLI Application"
 
 popd
 
-if [ -d "/tmp/src/os3/conf" ]; then
+if [ -d "/tmp/src/openshift/conf" ]; then
     echo "---> Overwriting default.conf and nginx.conf"
-    cp -Rf /tmp/src/os3/conf/nginx.conf /etc/nginx/nginx.conf
-    cp -Rf /tmp/src/os3/conf/default.conf /etc/nginx/conf.d/default.conf
+    cp -Rf /tmp/src/openshift/conf/nginx.conf /etc/nginx/nginx.conf
+    cp -Rf /tmp/src/openshift/conf/default.conf /etc/nginx/default.d/default.conf
+    cp -Rf /tmp/src/openshift/conf/module.conf /etc/nginx/conf.d/module.conf
 fi
 
 
