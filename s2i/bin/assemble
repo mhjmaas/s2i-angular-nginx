@@ -12,7 +12,7 @@ npm install
 npm install --only=dev
 
 echo "---> Building Angular CLI Application"
-npm run buld
+npm run build
 
 popd
 
