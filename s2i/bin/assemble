@@ -42,11 +42,11 @@ if [ -d "/tmp/src/openshift/conf" ]; then
     chmod -Rf g+rw /tmp/src/openshift/conf/module.conf/etc/nginx.d/conf.d/module.conf
 fi
 
-if [ -d "/tmp/src/nginx/openshift/sites-available" ]; then
-    echo "---> Moving the default.d conf"
-	cp -Rf /tmp/src/nginx/openshift/sites-available/*.conf "${NGINX_DEFAULT_CONF_PATH}"
-    chmod -Rf g+rw ${NGINX_DEFAULT_CONF_PATH}
-fi
+#if [ -d "/tmp/src/nginx/openshift/sites-available" ]; then
+#    echo "---> Moving the default.d conf"
+#	cp -Rf /tmp/src/nginx/openshift/sites-available/*.conf "${NGINX_DEFAULT_CONF_PATH}"
+#    chmod -Rf g+rw ${NGINX_DEFAULT_CONF_PATH}
+#fi
 
 if [ -d ./nginx-start ]; then
   echo "---> Copying nginx start-hook scripts..."
