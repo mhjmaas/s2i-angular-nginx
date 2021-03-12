@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: List
+items:
+- kind: BuildConfig
+  apiVersion: "v1"
+  metadata:
+    name: s2i-angular
+    namespace: rftm-test
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: 's2i-angular:latest'
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      git:
+        ref: master
+        uri: 'https://github.com/mhjmaas/s2i-angular-nginx.git'
+      type: Git
+    strategy:
+      dockerStrategy:
+        dockerfilePath: Dockerfile
+      type: Docker
+    triggers: []
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    generation: 1
+    labels:
+      app: s2i-angular
+      version: "v1"
+    name: s2i-angular
+  spec:
+    tags:
+      - name: latest
+        annotations:
+          description: "Build Angular apps with CLI and run them with NGINX"
+          iconClass: "js-icon"
+          supports: "angular,angular:1"
+          tags: "builder,nginx"
+          version: "1"
+        from:
+          kind: "ImageStreamTag"
+          name: "latest"
