@@ -55,7 +55,7 @@ RUN yum -y module reset nodejs && yum -y module enable nodejs:$NODEJS_VERSION &&
     ln -s /usr/lib/node_modules/nodemon/bin/nodemon.js /usr/bin/nodemon && \
     yum remove -y $INSTALL_NPM_PKGS && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_NPM_PKGS && \
-    yum install -y rh-python36 && \
+    yum install -y python3 && \
     rpm -V $INSTALL_NPM_PKGS && \
     yum -y clean all --enablerepo='*'
 
