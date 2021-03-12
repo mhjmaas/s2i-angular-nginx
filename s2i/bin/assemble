@@ -15,12 +15,6 @@ npm run build
 
 popd
 
-if [ -d "/tmp/src/openshift/conf" ]; then
-    echo "---> Overwriting default.conf and nginx.conf"
-    cp -Rf /tmp/src/openshift/conf/nginx.conf /etc/nginx/nginx.conf
-    cp -Rf /tmp/src/openshift/conf/default.conf /etc/nginx/default.d/default.conf
-    cp -Rf /tmp/src/openshift/conf/module.conf /etc/nginx/conf.d/module.conf
-fi
 
 echo "---> Installing application to web container"
 cp -Rf /tmp/src/dist/*/. ./
@@ -32,10 +26,20 @@ set -e
 fix-permissions ./
 
 # Nginx stuff
-if [ -f "/tmp/src/nginx/openshift/nginx.conf" ]; then
+#if [ -f "/tmp/src/nginx/openshift/nginx.conf" ]; then
+#    echo "---> Overwriting default.conf and nginx.conf"
+#    cp -Rf /tmp/src/nginx/openshift/conf/nginx.conf "${NGINX_CONFIGURATION_PATH}"
+#    chmod -Rf g+rw ${NGINX_CONFIGURATION_PATH}
+#fi
+
+if [ -d "/tmp/src/openshift/conf" ]; then
     echo "---> Overwriting default.conf and nginx.conf"
-    cp -Rf /tmp/src/nginx/openshift/conf/nginx.conf "${NGINX_CONFIGURATION_PATH}"
-    chmod -Rf g+rw ${NGINX_CONFIGURATION_PATH}
+    cp -Rf /tmp/src/openshift/conf/nginx.conf /etc/nginx.d/nginx.conf
+    chmod -Rf g+rw /etc/nginx.d/nginx.conf
+    cp -Rf /tmp/src/openshift/conf/default.conf /etc/nginx.d/default.d/default.conf
+    chmod -Rf g+rw /etc/nginx.d/default.d/default.conf
+    cp -Rf /tmp/src/openshift/conf/module.conf /etc/nginx.d/conf.d/module.conf
+    chmod -Rf g+rw /tmp/src/openshift/conf/module.conf/etc/nginx.d/conf.d/module.conf
 fi
 
 if [ -d "/tmp/src/nginx/openshift/sites-available" ]; then
