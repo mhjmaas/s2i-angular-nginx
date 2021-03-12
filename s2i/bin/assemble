@@ -34,7 +34,9 @@ fix-permissions ./
 
 if [ -d "/tmp/src/openshift/conf" ]; then
     echo "---> Overwriting default.conf and nginx.conf"
-    cp -Rf /tmp/src/openshift/conf/nginx.conf /etc/nginx/nginx.conf
+    echo "${NGINX_CONFIGURATION_PATH}"
+#    cp -Rf /tmp/src/openshift/conf/nginx.conf /etc/nginx/nginx.conf
+    cp -Rf /tmp/src/openshift/conf/nginx.conf "${NGINX_CONFIGURATION_PATH}"
     chmod -Rf g+rw /etc/nginx/nginx.conf
 #    cp -Rf /tmp/src/openshift/conf/default.conf /etc/nginx/default.d/default.conf
 #    chmod -Rf g+rw /etc/nginx/default.d/default.conf
