@@ -58,17 +58,6 @@ RUN yum -y module reset nodejs && yum -y module enable nodejs:$NODEJS_VERSION &&
     rpm -V $INSTALL_NPM_PKGS && \
     yum -y clean all --enablerepo='*'
 
-RUN INSTALL_PYTHON_PKGS="python36 python36-devel python3-virtualenv python3-setuptools python3-pip \
-        nss_wrapper httpd httpd-devel mod_ssl mod_auth_gssapi \
-        mod_ldap mod_session atlas-devel gcc-gfortran libffi-devel \
-        libtool-ltdl enchant" && \
-    yum -y module enable python36:3.6 httpd:2.4 && \
-    yum -y --setopt=tsflags=nodocs install $INSTALL_PYTHON_PKGS && \
-    rpm -V $INSTALL_PYTHON_PKGS && \
-    # Remove redhat-logos-httpd (httpd dependency) to keep image size smaller.
-    rpm -e --nodeps redhat-logos-httpd && \
-    yum -y clean all --enablerepo='*'
-
 
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
