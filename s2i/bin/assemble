@@ -26,23 +26,23 @@ set -e
 fix-permissions ./
 
 # Nginx stuff
-#if [ -f "/tmp/src/nginx/openshift/nginx.conf" ]; then
-#    echo "---> Overwriting default.conf and nginx.conf"
-#    cp -Rf /tmp/src/nginx/openshift/conf/nginx.conf "${NGINX_CONFIGURATION_PATH}"
-#    chmod -Rf g+rw ${NGINX_CONFIGURATION_PATH}
-#fi
-
-if [ -d "/tmp/src/openshift/conf" ]; then
+if [ -f "/tmp/src/nginx/openshift/nginx.conf" ]; then
     echo "---> Overwriting default.conf and nginx.conf"
-    echo "${NGINX_CONFIGURATION_PATH}"
-    cp -Rf /tmp/src/openshift/conf/nginx.conf /opt/app-root/etc/nginx.d/nginx.conf
-#  cp -Rf /tmp/src/openshift/conf/nginx.conf "${NGINX_CONFIGURATION_PATH}"
-    chmod -Rf g+rw /opt/app-root/etc/nginx.d/nginx.conf
-    cp -Rf /tmp/src/openshift/conf/default.conf   /opt/app-root/etc/nginx.default.d/default.conf
-    chmod -Rf g+rw /opt/app-root/etc/nginx.default.d/default.conf
-    cp -Rf /tmp/src/openshift/conf/module.conf  /opt/app-root/etc/nginx.d/module.conf
-   chmod -Rf g+rw /opt/app-root/etc/nginx.d/module.conf
+    cp -Rf /tmp/src/nginx/openshift/conf/nginx.conf "${NGINX_CONFIGURATION_PATH}"
+    chmod -Rf g+rw ${NGINX_CONFIGURATION_PATH}
 fi
+
+#if [ -d "/tmp/src/openshift/conf" ]; then
+#    echo "---> Overwriting default.conf and nginx.conf"
+#    echo "${NGINX_CONFIGURATION_PATH}"
+#    cp -Rf /tmp/src/openshift/conf/nginx.conf /opt/app-root/etc/nginx.d/nginx.conf
+##  cp -Rf /tmp/src/openshift/conf/nginx.conf "${NGINX_CONFIGURATION_PATH}"
+#    chmod -Rf g+rw /opt/app-root/etc/nginx.d/nginx.conf
+#    cp -Rf /tmp/src/openshift/conf/default.conf   /opt/app-root/etc/nginx.default.d/default.conf
+#    chmod -Rf g+rw /opt/app-root/etc/nginx.default.d/default.conf
+#    cp -Rf /tmp/src/openshift/conf/module.conf  /opt/app-root/etc/nginx.d/module.conf
+#   chmod -Rf g+rw /opt/app-root/etc/nginx.d/module.conf
+#fi
 
 #if [ -d "/tmp/src/nginx/openshift/sites-available" ]; then
 #    echo "---> Moving the default.d conf"
