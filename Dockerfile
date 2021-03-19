@@ -80,6 +80,7 @@ RUN sed -i -f ${NGINX_APP_ROOT}/nginxconf-fed.sed ${NGINX_CONF_PATH} && \
     chmod -R a+rwx ${NGINX_CONTAINER_SCRIPTS_PATH}/nginx-start && \
     chown -R 1001:0 ${NGINX_APP_ROOT} && \
     chown -R 1001:0 /var/lib/nginx && \
+    chown -R 1001:0 /etc/nginx && \
     chown -R 1001:0 ${NGINX_CONTAINER_SCRIPTS_PATH}/nginx-start && \
     # FIXME: Not sure if this is safe to do, just a hack to make the image work
     #chmod -R a+rwx /var/run && \
