@@ -24,7 +24,7 @@ popd
 
 
 echo "---> Installing application to web container"
-cp -Rf /tmp/src/dist/*/. ./
+cp -Rf /tmp/src/dist/* ./
 	
 
 set -e
