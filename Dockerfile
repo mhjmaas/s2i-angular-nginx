@@ -45,7 +45,7 @@ RUN yum -y module enable nginx && \
 
 
 # Install node
-ENV NODEJS_VERSION=12 \
+ENV NODEJS_VERSION=16 \
     NPM_RUN=start \
     NPM_CONFIG_PREFIX=$HOME/.npm-global \
     PATH=$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH    
