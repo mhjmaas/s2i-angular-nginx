@@ -37,7 +37,7 @@ ENV NGINX_CONFIGURATION_PATH=${APP_ROOT}/etc/nginx.d \
     NGINX_APP_ROOT=${APP_ROOT} \
     NGINX_LOG_PATH=/var/log/nginx
 
-RUN yum -y module enable nginx && \
+RUN yum -y module enable nginx && yum install -y wget && \
     INSTALL_NGINX_PKGS="nss_wrapper bind-utils gettext hostname nginx nginx-mod-stream" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_NGINX_PKGS && \
     rpm -V $INSTALL_NGINX_PKGS && \
