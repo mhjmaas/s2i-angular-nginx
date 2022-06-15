@@ -6,17 +6,25 @@ if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
     mv /tmp/artifacts/* .
 fi
 
+echo "---> Patching double/single quotes in package.json"
+sed -i 's#\\"#'\''#g' ./package.json
+
 echo "---> Installing NPM Dependencies"
-npm ci
+#npm ci
+npm install
+
+echo "---> Patching TypeScript"
+npm i ts-patch -D
+/tmp/src/node_modules/.bin/ts-patch install --persist
 
 echo "---> Building Angular CLI Application"
-npm run build
+npm run $NPM_SCRIPT_CONFIG
 
 popd
 
 
 echo "---> Installing application to web container"
-cp -Rf /tmp/src/dist/*/. ./
+cp -Rf /tmp/src/dist/* ./
 	
 
 set -e
@@ -65,5 +73,5 @@ if [ -d ./nginx-start ]; then
   fi
 fi
 
-echo "---> Removing application source"
-rm -rf /tmp/src
+#echo "---> Removing application source"
+#rm -rf /tmp/src
